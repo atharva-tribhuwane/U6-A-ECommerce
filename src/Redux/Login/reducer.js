@@ -1,6 +1,7 @@
 import { LOGIN_FAILED, LOGIN_LOADING } from "./action";
 import { LOGIN_SUCCESS } from "./action";
-import { LOGIN_ERROR } from "./action";
+import { LOGOUT } from "./action";
+
 
 
 const init = {
@@ -9,6 +10,7 @@ const init = {
     loading: false
 }
 export const Loginreducer = (store =  init , action) => {
+    console.log("in reducer action is ", action);
     switch (action.type) {
         case LOGIN_LOADING :{
             return{...store, loading:true }
@@ -18,6 +20,9 @@ export const Loginreducer = (store =  init , action) => {
         }
         case LOGIN_FAILED :{
             return{...store, loading:false, error:true }
+        }
+        case LOGOUT :{
+            return{...store, loading:false, error:false, token:null }
         }
         default:{
             return store

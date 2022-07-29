@@ -1,0 +1,27 @@
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.2%;
+    /* border: 3px solid yellow; */
+    background-color: rgb(28, 100, 225);
+    font-weight: 700;
+    color: White;
+}
+.navbar>div{
+    width: 20%;
+    /* border: 1px solid red; */
+
+}
+.navbar>div:nth-child(2){
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
+}
+.navbar>div:nth-child(2)>a,span{
+    text-decoration: none;
+    color: White;
+    font-weight: 500;
+    cursor: pointer;
+}
