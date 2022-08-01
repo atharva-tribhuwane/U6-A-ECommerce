@@ -3,13 +3,15 @@
 // import { LOGIN_ERROR } from "./login/action";
 import { Loginreducer } from "./login/reducer";
 import { legacy_createStore as createStore, combineReducers} from "redux";
-import {thunk} from "redux-thunk";
-
+import { applyMiddleware,  } from "redux";
+import thunk from "redux-thunk";
+import { ProdReducer } from "./products/reducer";
 const rootReducer =combineReducers({
     Login:Loginreducer,
+    Products:ProdReducer
 });
 
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer,applyMiddleware(thunk));
 
 store.subscriber=()=>{
     console.log("State:", store.getState());

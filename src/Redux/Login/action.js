@@ -32,6 +32,6 @@ export const logout = (payLoad)=>({
 //         }
 //     })
 //      .then((res)=>res.json())
-//      .then((res)=>{console.log("token:",res); dispatch(loginSuccess(res)})
+//      .then((res)=>{dispatch(loginSuccess(res))})
 //      .catch((error)=>console.log(error),loginFailure())
 // }

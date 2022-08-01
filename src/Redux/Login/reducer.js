@@ -10,7 +10,7 @@ const init = {
     loading: false
 }
 export const Loginreducer = (store =  init , action) => {
-    console.log("in reducer action is ", action);
+    console.log("in actionreducer action is ", action);
     switch (action.type) {
         case LOGIN_LOADING :{
             return{...store, loading:true }
