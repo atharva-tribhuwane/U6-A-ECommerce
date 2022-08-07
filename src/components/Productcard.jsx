@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import { useNavigate } from "react-router-dom";
+import { Individualprod } from "./Individualprod";
+import { Link } from "react-router-dom";
+
 
 export const Productcard = ({props}) => {
     // console.log(props)
+    const navigate = useNavigate();
+    const [tp, setTp] = useState("Helllo")
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -31,10 +38,13 @@ export const Productcard = ({props}) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
+        <Link to={`/prod/${props.id}`}>
+        <Button size="small" color="primary" >
+          view
         </Button>
+        </Link>
       </CardActions>
+      
     </Card>
   );
 }

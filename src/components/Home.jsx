@@ -3,21 +3,24 @@ import { useSelector, useDispatch } from "react-redux";
 import { Login } from "./Login";
 import { Navigate } from "react-router-dom";
 import { Productcard } from "./Productcard";
-import { products } from "../Redux/products/action";
 import { Button } from "@mui/material";
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+
 export const Home = () => {
   const [page, setPage] = useState(1);
   const { token } = useSelector(state => state.Login);
   console.log(token);
   const [sort, setSort] = useState("");
   const [order, setOrder] = useState("");
+
   const [products, setProducts] = useState({
     loading: false,
     error: false,
     data: []
   })
+
+
   const getData = () => {
     setProducts(prev => ({
       ...prev,
@@ -42,19 +45,26 @@ export const Home = () => {
         error: true
       })))
   }
+
+  
   useEffect(() => {
     getData();
 
   }, [page,sort,order])
 
   return (
-    // token!==null?<h1>Home</h1> : <Navigate to="/login"/>
-
+    <>
+    {/* {token!==null?<h1>Home</h1> : <Navigate to="/login"/>} */}
     <div>
+      
       <div>
         <Button variant={sort === "lowtohigh"?"contained":"outlined"} onClick={() => {setOrder("asc"); setSort("price")}} style={{ margin: "2%" }}>Low To High</Button>
 
         <Button variant={sort === "hightolow"?"contained":"outlined"} onClick={() =>  {setOrder("desc"); setSort("price")}} style={{ margin: "2%" }}>High TO Low</Button>
+
+        {/* <Button variant={sort === "hightolow"?"contained":"outlined"} onClick={() =>  {setOrder("desc"); setSort("price")}} style={{ margin: "2%" }}>High TO Low</Button>
+
+        <Button variant={sort === "hightolow"?"contained":"outlined"} onClick={() =>  {setOrder("desc"); setSort("price")}} style={{ margin: "2%" }}>High TO Low</Button> */}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "auto auto auto", gap: "58px", width: "75%", margin: "auto", marginTop: "5%" }}>
         {
@@ -64,7 +74,7 @@ export const Home = () => {
               : products.error
                 ? <h1>Error</h1>
                 : products.data.map((ele) =>
-                  <Productcard key={ele.id} props={ele} style={{ marginBottom: "15px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }} />) : <Navigate to="/login" />
+                  <Productcard key={ele.id} props={ele} style={{ marginBottom: "15px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}  />) : <Navigate to="/login" />
 
         }
       </div>
@@ -76,5 +86,6 @@ export const Home = () => {
 
 
     </div>
+    </>
   )
 }

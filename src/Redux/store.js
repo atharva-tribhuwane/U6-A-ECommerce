@@ -5,10 +5,10 @@ import { Loginreducer } from "./login/reducer";
 import { legacy_createStore as createStore, combineReducers} from "redux";
 import { applyMiddleware,  } from "redux";
 import thunk from "redux-thunk";
-import { ProdReducer } from "./products/reducer";
+import { cartReducer } from "./cart/reducer";
 const rootReducer =combineReducers({
     Login:Loginreducer,
-    Products:ProdReducer
+    Cart:cartReducer
 });
 
 export const store = createStore(rootReducer,applyMiddleware(thunk));

@@ -6,6 +6,7 @@ import { LOGOUT } from "../Redux/login/action";
 import { logout } from "../Redux/login/action";
 import { IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import {Cart} from "./Cart"
 export const Navbar = ()=>{
     const {token} = useSelector(state=>state.Login);
     const dispatch = useDispatch()
@@ -24,6 +25,9 @@ export const Navbar = ()=>{
         <Link to={"/"} style={{marginRight:"13%", color:"white", textDecoration:"none"}}>Home</Link>
         {
             token===null?<Link to={"/login"}>Login</Link>: <span onClick={()=>handleLogout()}>Logout</span>
+        }
+        {
+            token!==null?<Link to={"/cart"} style={{marginLeft:"5%", textDecoration:"none", cursor:"pointer", color:"white"}}>Cart</Link>: <></>
         }
         
         </div>
